@@ -1,20 +1,14 @@
-package com.jwttutorial.entity;
+package com.jwttutorial.dto;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
-
-@Entity
-@Getter
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Authority {
-
-    @Id
+public class AuthorityDto {
     private String authorityName;
 }

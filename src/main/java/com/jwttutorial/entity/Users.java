@@ -5,7 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -27,7 +30,11 @@ public class Users {
 
     private boolean activated;
 
-    @OneToMany(mappedBy = "user")
-    private Set<UserAuthority> userAuthorities;
+    @ManyToMany
+    @JoinTable(
+            name = "user_authority",
+            joinColumns = {@JoinColumn(name = "userId", referencedColumnName = "userId")},
+            inverseJoinColumns = {@JoinColumn(name = "authorityName", referencedColumnName = "authorityName")})
+    private Set<Authority> authorities;
 
 }
