@@ -16,12 +16,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests((authorizeRequests) ->
-                        authorizeRequests
-                                .requestMatchers(PathRequest.toH2Console()).permitAll()     //h2 console 관련 security 허용
-                                .requestMatchers("/api/hello").permitAll()
-                                .anyRequest().authenticated()
-                );
+            .authorizeHttpRequests((authorizeRequests) ->
+                authorizeRequests
+                    .requestMatchers(PathRequest.toH2Console()).permitAll()     //h2 console 관련 security 허용
+                    .requestMatchers("/api/hello").permitAll()
+                    .anyRequest().authenticated()
+            );
         return http.build();
     }
 }
